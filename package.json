@@ -1,14 +1,25 @@
 {
-  "name": "BUN-BLOG",
+  "name": "bun-blog",
   "version": "1.0.50",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun --watch src/index.ts",
+    "build": "bun build src/index.ts --target bun --outdir ./dist",
+    "start": "NODE_ENV=production bun dist/index.js",
+    "test": "bun test"
   },
   "dependencies": {
-    "elysia": "latest"
+    "@elysiajs/cookie": "^0.8.0",
+    "@elysiajs/swagger": "^1.1.1",
+    "@prisma/client": "5.19.1",
+    "bcrypt": "^5.1.1",
+    "elysia": "latest",
+    "jsonwebtoken": "^9.0.2",
+    "prisma": "^5.19.1",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.7",
     "bun-types": "latest"
   },
   "module": "src/index.js"

@@ -1,7 +1,12 @@
-import { Elysia } from "elysia";
+import app from "./app";
 
-const app = new Elysia().get("/", () => "Hello Elysia").listen(3000);
+app.on("error", (error) => {
+  console.log("Error initializing the application.");
+  throw error;
+});
 
-console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
-);
+app.listen(Number(process.env.PORT), () => {
+  console.log(
+    `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
+  );
+});
